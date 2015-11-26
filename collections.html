@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script type="text/javascript" src="js/collections.js"></script>
+<body>
+
+<div ng-app="collections">
+ 
+	<div ng-controller="ItemsController">
+		<h4 ng-pluralize count="items.length"
+		when="{'one': '1 item', 'other': '{} items'}">
+		</h4>
+		<table class="table table-condensed">
+			<tr ng-repeat="item in items">
+				<td ng-bind="item.name"></td>
+				<td>
+				<button class="btn btn-xs btn-default" ng-click="destroy(item)">
+				destruir!
+				</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div>
+		<dl ng-controller="ItemsPriceController">
+			<dt ng-repeat-start="item in items">name</dt>
+			<dd ng-bind="item.name"></dd>
+			<dt>price</dt>
+			<dd ng-repeat-end ng-bind="item.price"></dd>
+		</dl>
+	</div>
+</div>
+</body>
+</html>
